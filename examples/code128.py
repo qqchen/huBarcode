@@ -28,7 +28,7 @@ class StudentIDEnCoder:
         self.name = name
         self.grade = grade
         self._class = _class
-        self.option = {"ttf_font":"C:/Windows/Fonts/cambriab.ttf","ttf_fontsize":14, "up_border" : 30, "bottom_border":20,"height":120,"label_border":2}
+        self.option = {"ttf_font":"C:/Windows/Fonts/cambriab.ttf","ttf_fontsize":19, "up_border" : 30, "bottom_border":20,"height":120,"label_border":2}
         self.image = None
 
     def get_encode_image(self):
@@ -40,6 +40,12 @@ class StudentIDEnCoder:
     	im = Image.new('L', (imgw, imgh + up_border+1), 'white')
     	box = (0, up_border, imgw, up_border + imgh)
     	im.paste(self.image, box)
+
+    	draw = ImageDraw.Draw(im)
+    	#font = ImageFont.truetype(self.option.get('ttf_font'), self.option.get('ttf_fontsize'))
+    	#draw.setfont(font)
+    	font = ImageFont.truetype('simsun.ttc', 24, encoding="utf-8");
+    	draw.text((2 * 10, up_border - self.option.get('ttf_fontsize')), unicode(self.name, 'UTF-8'), 'black', font=font)
 
 
 
