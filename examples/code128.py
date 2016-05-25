@@ -15,6 +15,30 @@ from PIL import Image,ImageDraw,ImageFont
 '''
 
 
+class StudentIDEnCoder:
+    """encode student id as code128"""
+
+    def __init__(self, id, name, grade, _class):
+        """ * id: 
+            * name:
+            * grade:
+            * class: """
+
+        self.id = id
+        self.name = name
+        self.grade = grade
+        self._class = _class
+        self.option = {"ttf_font":"C:/Windows/Fonts/cambriab.ttf","ttf_fontsize":14,"bottom_border":10,"height":100,"label_border":2}
+        self.image = None
+
+    def get_encode_image(self):
+    	self.image = Code128Encoder(id.upper(), self.option).get_pilimage(bar_width=2)
+    	return self.image
+
+
+
+
+
 
 if __name__ == "__main__":
     #1 生成条形码
@@ -24,9 +48,21 @@ if __name__ == "__main__":
     	print 'wrong name'
     	exit(0)
 
+    id = text;
+    name = '周三'
+    grade = 3
+    _class = 2
+
+    encoder = StudentIDEnCoder(id, name, grade, _class)
+    img = encoder.get_encode_image()
+    img.save(file_name, 'PNG')
+
+
+'''
     encoder = Code128Encoder(text,options={"ttf_font":"C:/Windows/Fonts/cambriab.ttf","ttf_fontsize":14,
   "bottom_border":10,"height":100,"label_border":2})
     #encoder.save("test.png",bar_width=1)
     img = encoder.get_pilimage(bar_width=2)
     #img.save("tt.png", "PNG")
     img.save(file_name, 'PNG')
+'''
