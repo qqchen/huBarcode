@@ -28,12 +28,22 @@ class StudentIDEnCoder:
         self.name = name
         self.grade = grade
         self._class = _class
-        self.option = {"ttf_font":"C:/Windows/Fonts/cambriab.ttf","ttf_fontsize":14,"bottom_border":10,"height":100,"label_border":2}
+        self.option = {"ttf_font":"C:/Windows/Fonts/cambriab.ttf","ttf_fontsize":14, "up_border" : 30, "bottom_border":20,"height":120,"label_border":2}
         self.image = None
 
     def get_encode_image(self):
     	self.image = Code128Encoder(id.upper(), self.option).get_pilimage(bar_width=2)
-    	return self.image
+    	imgw, imgh = self.image.size
+    	up_border = self.option.get('up_border')
+    	print "up_border : ", up_border
+
+    	im = Image.new('L', (imgw, imgh + up_border+1), 'white')
+    	box = (0, up_border, imgw, up_border + imgh)
+    	im.paste(self.image, box)
+
+
+
+    	return im
 
 
 
