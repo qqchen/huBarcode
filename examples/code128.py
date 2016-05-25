@@ -45,7 +45,7 @@ class StudentIDEnCoder:
     	#font = ImageFont.truetype(self.option.get('ttf_font'), self.option.get('ttf_fontsize'))
     	#draw.setfont(font)
     	font = ImageFont.truetype('simsun.ttc', 24, encoding="utf-8");
-    	draw.text((2 * 10, up_border - self.option.get('ttf_fontsize')), unicode(self.name, 'UTF-8'), 'black', font=font)
+    	draw.text((2 * 10, up_border - self.option.get('ttf_fontsize')), self.name, 'black', font=font)
 
 
 
@@ -58,14 +58,15 @@ class StudentIDEnCoder:
 
 if __name__ == "__main__":
     #1 生成条形码
-    text = sys.argv[1].upper()
-    file_name = sys.argv[2]
+    _id = sys.argv[1].upper()
+    _name = sys.argv[2]
+    file_name = sys.argv[3]
     if file_name.find('png') < 0:
     	print 'wrong name'
     	exit(0)
 
-    id = text;
-    name = '周三'
+    id = _id;
+    name = unicode(_name, 'GBK')
     grade = 3
     _class = 2
 

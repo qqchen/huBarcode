@@ -1,6 +1,6 @@
-#!/usr/bin/env python
+#-*- encoding: utf-8 -*-
 """Example code for qrcode library"""
-__revision__ = "$Revision$"
+#__revision__ = "$Revision$"
 
 from hubarcode.qrcode import QRCodeEncoder
 import sys
