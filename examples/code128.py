@@ -12,7 +12,7 @@ import xlrd
 #logging.getLogger("code128").addHandler(logging.StreamHandler(sys.stdout))
 
 '''
-使用huBarcode,pygame和PIL生成条形码
+使用huBarcode和PIL生成条形码
 '''
 
 
@@ -29,10 +29,55 @@ class StudentIDEnCoder:
         self.name = name
         self.grade = grade
         self._class = _class
-        self.option = {"ttf_font":"C:/Windows/Fonts/cambriab.ttf","ttf_fontsize":16, "up_border" : 30, "bottom_border":15,"height":120,"label_border":4, "bar_width" : 2}
+        self.option = {"ttf_font":"C:/Windows/Fonts/msyhbd.ttf","ttf_fontsize":16, "up_border" : 30, "bottom_border":15,"height":120,"label_border":4, "bar_width" : 2}
         self.image = None
 
+    def set_ttf_font(self, font_path):
+    	res = font_path.find('ttf') >= 0
+    	if res :
+    		self.option["ttf_font"] = font_path
+    	return res
+
+    def set_font_size(self, font_size):
+    	res = font_size > 0
+    	if res :
+    		self.option["ttf_fontsize"] = font_size
+    	return res
+
+    def set_up_border(self, up_border):
+    	res = up_border > 0
+    	if res :
+    		self.option["up_border"] = up_border
+    	return res
+
+    def set_bottom_border(self, bottom_border):
+    	res = bottom_border > 0
+    	if res :
+    		self.option["bottom_border"] = bottom_border
+    	return res
+
+    def set_barcode_height(self, barcode_height):
+    	res = barcode_height > 0
+    	if res :
+    		self.option["height"] = barcode_height
+    	return res
+
+    def set_label_border(self, label_border):
+    	res = label_border > 0
+    	if res :
+    		self.option["label_border"] = label_border
+    	return res
+
+    def set_bar_width(self, bar_width):
+    	res = bar_width > 0
+    	if res :
+    		self.option["bar_width"] = bar_width
+    	return res
+
+
+
     def get_encode_image(self):
+    	self.set_barcode_height(130)
     	self.image = Code128Encoder(id.upper(), self.option).get_pilimage(bar_width=2)
     	imgw, imgh = self.image.size
     	ttf_fontsize = self.option.get('ttf_fontsize')
