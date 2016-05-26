@@ -29,7 +29,7 @@ class StudentIDEnCoder:
         self.name = name
         self.grade = grade
         self._class = _class
-        self.option = {"ttf_font":"C:/Windows/Fonts/msyhbd.ttf","ttf_fontsize":16, "up_border" : 30, "bottom_border":15,"height":120,"label_border":4, "bar_width" : 2}
+        self.option = {"ttf_font":"simhei.ttf","ttf_fontsize":16, "up_border" : 30, "bottom_border":15,"height":120,"label_border":4, "bar_width" : 2}
         self.image = None
 
     def set_ttf_font(self, font_path):
