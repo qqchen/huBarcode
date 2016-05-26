@@ -6,6 +6,7 @@ import logging
 import sys
 from hubarcode.code128 import Code128Encoder
 from PIL import Image,ImageDraw,ImageFont
+import xlrd
 
 #logging.getLogger("code128").setLevel(logging.DEBUG)
 #logging.getLogger("code128").addHandler(logging.StreamHandler(sys.stdout))
@@ -28,7 +29,7 @@ class StudentIDEnCoder:
         self.name = name
         self.grade = grade
         self._class = _class
-        self.option = {"ttf_font":"C:/Windows/Fonts/cambriab.ttf","ttf_fontsize":16, "up_border" : 30, "bottom_border":15,"height":120,"label_border":4}
+        self.option = {"ttf_font":"C:/Windows/Fonts/cambriab.ttf","ttf_fontsize":16, "up_border" : 30, "bottom_border":15,"height":120,"label_border":4, "bar_width" : 2}
         self.image = None
 
     def get_encode_image(self):
